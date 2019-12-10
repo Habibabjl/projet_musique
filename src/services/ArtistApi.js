@@ -1,6 +1,7 @@
 import * as api from "./Api";
 
-export async function getartistsWithMostAlbum() {
-  let url = "/artist/count/album";
-  return await api.get(url);
+export const getArtistsWithMostAlbum = async limit => {
+  let url = `/artist/count/album?limit=${limit}`;
+  const response = await api.get(url);
+  return response;
 }

@@ -7,9 +7,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import * as api from "./services/Api";
-
-const URL_ARTIST = "/api/v1/artist";
+import * as artistApi from "./services/ArtistApi";
 
 class App extends React.Component {
 
@@ -27,11 +25,9 @@ class App extends React.Component {
 
 
   async getArtistsWithMostAlbum(limit){
-    const result = await api.get(URL_ARTIST + "/count/album/?limit=" + limit);
-    console.log(result);
-
+    const data = await artistApi.getArtistsWithMostAlbum(limit);
     this.setState({
-      artistsWithMostAlbum: result
+      artistsWithMostAlbum: data || []
     });
   }
 
