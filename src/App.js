@@ -8,6 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import * as artistApi from "./services/ArtistApi";
+import ArtistPageComponent from './components/ArtistPageComponent';
 
 class App extends React.Component {
 
@@ -34,6 +35,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+
+
         <Paper>
           <Table aria-label="simple table">
             <TableHead>
@@ -53,6 +56,8 @@ class App extends React.Component {
             </TableBody>
           </Table>
         </Paper>
+        <ArtistPageComponent></ArtistPageComponent>
+
 
     </div>
   );
