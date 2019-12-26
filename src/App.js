@@ -6,6 +6,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { Chart } from "react-google-charts";
 import * as artistApi from "./services/ArtistApi";
 
 class App extends React.Component {
@@ -31,6 +32,11 @@ class App extends React.Component {
   }
 
   render() {
+    const artistsWithMostAlbum = this.state.artistsWithMostAlbum.length > 0 && this.state.artistsWithMostAlbum[0].name;
+    const datas = this.state.artistsWithMostAlbum.map((el, index) => {
+       return [el.name, el.sum];
+       });
+   datas.unshift(["a", "Sum"]);
     return (
       <div className="App">
         <Paper>
@@ -38,7 +44,7 @@ class App extends React.Component {
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
-                <TableCell align="right">Number of albums sold</TableCell>
+                <TableCell align="right">Number of albums</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -52,6 +58,23 @@ class App extends React.Component {
             </TableBody>
           </Table>
         </Paper>
+
+        <Chart
+          width={'500px'}
+          height={'300px'}
+          chartType="BarChart"
+          loader={<div>Loading Chart</div>}
+          data={datas}
+          options={{
+            title: 'Artists with the most albums ',
+         //   legend: {position:"none"},
+            colors: ["#b87333"],
+            histogram: { lastBucketPercentile: 5 },
+            vAxis: { scaleType: "mirrorLog" }
+          
+          }}
+          rootProps={{ 'data-testid': '3' }}
+        />
 
     </div>
   );
