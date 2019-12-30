@@ -39,6 +39,7 @@ class App extends React.Component {
    datas.unshift(["a", "Sum"]);
     return (
       <div className="App">
+        <h1>Home</h1>
         <Paper>
           <Table aria-label="simple table">
             <TableHead>
