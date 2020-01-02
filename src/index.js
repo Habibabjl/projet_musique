@@ -9,7 +9,7 @@ import TopArtist from './components/TopArtist.js';
 import NotFound from './components/NotFound'
 import * as serviceWorker from './serviceWorker';
 import Toolbar from '@material-ui/core/Toolbar';
-import { fade, makeStyles } from '@material-ui/core/styles';
+//import { fade, makeStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 

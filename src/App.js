@@ -9,6 +9,7 @@ import Paper from "@material-ui/core/Paper";
 import { Chart } from "react-google-charts";
 import * as artistApi from "./services/ArtistApi";
 
+
 //import { SearchBar } from 'react-native-elements';
 class App extends React.Component {
 
@@ -32,15 +33,11 @@ class App extends React.Component {
     });
   }
 
- /* updateSearch = search => {
+/*updateSearch = search => {
     this.setState({ search });
     
-  };
-   <SearchBar
-          placeholder="Type Here..."
-          onChangeText={this.updateSearch}
-          value={search}
-        />*/
+  };*/
+  
 
 
   render() {
@@ -52,9 +49,7 @@ class App extends React.Component {
    datas.unshift(["a", "Sum"]);
     return (
       <div className="App">
-        <h1>Home</h1>
-
-       
+        <h1>Home</h1> 
         <Paper>
           <Table aria-label="simple table">
             <TableHead>
