@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import Pricing from '../Pricing'
 import PropTypes from 'prop-types'
 
-const PricingPageTemplate = ({
+const StatisticPageTemplate = ({
   title,
   meta_title,
   meta_description,
@@ -49,7 +49,7 @@ const PricingPageTemplate = ({
   </div>
 )
 
-PricingPageTemplate.propTypes = {
+StatisticPageTemplate.propTypes = {
   title: PropTypes.string,
   meta_title: PropTypes.string,
   meta_description: PropTypes.string,
@@ -60,4 +60,4 @@ PricingPageTemplate.propTypes = {
   }),
 }
 
-export default PricingPageTemplate
+export default StatisticPageTemplate
