@@ -20,7 +20,7 @@ class App extends React.Component {
   }
     
   componentDidMount() {
-    this.getArtistsWithMostAlbum(10);
+   // this.getArtistsWithMostAlbum(10);
   }
 
 
@@ -30,6 +30,8 @@ class App extends React.Component {
       artistsWithMostAlbum: data || []
     });
   }
+
+  async
 
   render() {
     return (
