@@ -34,3 +34,10 @@ export const getArtistDataByid = async function(artistId){
   const response = await api.get(url);
   return response;
 }
+
+export const getArtistDataByName = async function(artistName){
+  let url= 'artist/name/'+artistName;
+
+  const response = await api.get(url);
+  return response;
+}
