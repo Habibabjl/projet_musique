@@ -27,9 +27,17 @@ class ArtistPageComponent extends React.Component {
 
     
   componentDidMount() {
-     this.getArtistAlbums(10);
+     //this.getArtistAlbums(10);
+     this.getArtistDataById("56d93d84ce06f50c0fed8747");
   }
 
+  async getArtistDataById(artistId){
+    const data = await artistApi.getArtistDataByid(artistId);
+    console.log(data);
+    this.setState({
+       artistData: data
+     });
+   }
 
     async getArtistAlbums(limit){
      const data = await artistApi.getArtistAlbums(limit);

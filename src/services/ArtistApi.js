@@ -1,4 +1,5 @@
 import * as api from "./Api";
+import { async } from "q";
 
 export const getArtistsWithMostAlbum = async limit => {
   let url = `/artist/count/album?limit=${limit}`;
@@ -27,3 +28,9 @@ export const getArtistAlbums = async limit => {
   return response;
 }
 
+export const getArtistDataByid = async function(artistId){
+  let url= 'artist/id/'+artistId;
+
+  const response = await api.get(url);
+  return response;
+}
