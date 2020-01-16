@@ -1,73 +1,96 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# gatsby-starter-business
+A [Gatsby v2](https://www.gatsbyjs.org/) and [Netlify CMS](https://www.netlifycms.org) powered generic business website.
 
+It follows the [JAMstack architecture](https://jamstack.org) by using Git as a single source of truth, and [Netlify](https://www.netlify.com) for continuous deployment, and CDN distribution.
 
-## Heroku
+## Demo
+[Gatsby Starter Business](https://gatsby-starter-business.netlify.com)
 
-Lien vers notre hebergeur Heroku : https://projetmusique.herokuapp.com/
+## Features
+* Complete Business Website Suite - Home Page, About Page, Pricing Page, Contact Page and Blog
+* Netlify CMS for Content Management
+* SEO Friendly (Sitemap, Schemas, Meta Tags, GTM etc)
+* Bulma and Sass Support for styling
+* Progressive Web App & Offline Support
+* Tags and RSS Feed for Blog
+* Disqus and Share Support
+* Elastic-Lunr Search (NEW)
+* Pagination (NEW)
+* Contact Form (Netlify Forms)
+* Easy Configuration using `config.js` file
+
+## Prerequisite
+* Node
+* Gatsby CLI (globally installed)
+
+## Getting Started
+Create your own project with Gatsby CLI:
+```shell
+gatsby new yourbusinessname https://github.com/v4iv/gatsby-starter-business.git 
+```
 
 ## Available Scripts
 
-In the project directory, you can run:
+### Develop
+Start a hot-reloading development environment accessible at `localhost:8000`
+```shell
+yarn start
+```
 
-### `npm start`
+### Build
+Get an optimized production build for your site generating static HTML and per-route JavaScript code bundles.
+```shell
+yarn build
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Serve
+gatsby serve — Gatsby starts a local HTML server for testing your built site.
+```shell
+yarn serve
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Lint
+Lint the code according to eslintrc file, for consistency.
+```shell
+yarn lint
+```
 
-### `npm test`
+### Clean
+Remove the .cache and public for a scratch compile.
+```shell
+yarn clean
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Configuration
+To personalize and configure this Starter open `config.js` file and replace the default values.
 
-### `npm run build`
+```javascript
+module.exports = {
+  siteTitle: 'Gatsby Starter Business', // Site title.
+  siteTitleAlt: 'Business', // Alternative site title for SEO.
+  siteLogo: '/icons/icon-512x512.png', // Logo used for SEO and manifest.
+  siteUrl: 'https://gatsby-starter-business.netlify.com', // Domain of your website without pathPrefix.
+  // Do not use trailing slash!
+  pathPrefix: '/', // Prefixes all links. For cases when deployed to example.github.io/gatsby-starter-business/.
+  siteDescription: 'Leverage Gatsby Business Starter for your Business.', // Website description used for RSS feeds/meta description tag.
+  siteRss: '/rss.xml',
+  siteFBAppID: '', // FB Application ID for using app insights
+  googleTagManagerID: '', // GTM tracking ID.
+  disqusShortname: 'gatsby-business-starter', // Disqus shortname.
+  userName: 'Vaibhav Sharma',
+  userTwitter: 'vaibhaved',
+  userLocation: 'Delhi NCR, India',
+  userDescription: '',
+  copyright: 'Copyright © Gatsby Starter Business 2018. All Rights Reserved.', // Copyright string for the footer of the website and RSS feed.
+  themeColor: '#00d1b2', // Used for setting manifest and progress theme colors.
+  backgroundColor: '#ffffff', // Used for setting manifest background color.
+}
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Deployment
+Clicking the button will ask for authentication via Github, which will create a repo in your github account with this starter. Then, it will build and deploy the site to Netlify.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/v4iv/gatsby-starter-business&amp;stack=cms"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+You can read up on how to set up Identity(Authentication for CMS User) here [How To Set Up Netlify CMS](https://www.netlifycms.org/docs/add-to-your-site/)

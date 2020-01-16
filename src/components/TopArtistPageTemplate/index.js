@@ -1,6 +1,7 @@
 import React from 'react'
 import Content from '../Content'
 import PropTypes from 'prop-types'
+import { Table } from '@material-ui/core'
 
 const TopArtistPageTemplate = ({ title, content, contentComponent }) => {
   const PageContent = contentComponent || Content
@@ -34,6 +35,7 @@ const TopArtistPageTemplate = ({ title, content, contentComponent }) => {
         </div>
       </section>
     </div>
+
   )
 }
 

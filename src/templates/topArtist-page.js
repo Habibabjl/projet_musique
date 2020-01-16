@@ -6,9 +6,18 @@ import { HTMLContent } from '../components/Content'
 import TopArtistPageTemplate from '../components/TopArtistPageTemplate'
 import Layout from '../components/Layout'
 
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+
+import * as artistApi from "../services/ArtistApi";
+
+
 const TopArtistPage = ({ data }) => {
   const { markdownRemark: post } = data
-
   return (
     <Layout>
       <Helmet>
