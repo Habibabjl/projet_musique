@@ -1,6 +1,24 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `Music project`,
+    menuLinks:[
+      {
+        name:'Home',
+        link:'/'
+       },
+      {
+        name:'Top artist',
+        link:'/page-2'
+      },
+      {
+        name:'Statistic',
+        link:'/statistics'
+      },
+      {
+        name:'Compare two artists',
+        link:'/compareArtists'
+      }
+    ],
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
   },
