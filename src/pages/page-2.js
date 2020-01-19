@@ -12,19 +12,30 @@ export default class TopArtist extends Component{
     super(props);
     this.state = {
       artistsWithMostAlbum: [],
+      membersWithMostBands: [],
       search: ""
     }
   }
     
   componentDidMount() {
     this.getArtistsWithMostAlbum(10);
+    this.getMembersWithMostBands(10);
   }
 
-
+  //Get artist with the most album
   async getArtistsWithMostAlbum(limit){
     const data = await artistApi.getArtistsWithMostAlbum(limit);
     this.setState({
       artistsWithMostAlbum: data || []
+    });
+  }
+
+  //Get members with the most bands
+  async getMembersWithMostBands(limit){
+    const dataMembers = await artistApi.getMembersWithMostBands(limit);
+    console.log(dataMembers);
+    this.setState({
+      membersWithMostBands: dataMembers || []
     });
   }
 
@@ -34,11 +45,17 @@ export default class TopArtist extends Component{
        return [el.name, el.sum];
       });
     datas.unshift(["a", "Sum"]);
+ 
+    const membersWithMostBands = this.state.artistsWithMostAlbum.length > 0 && this.state.artistsWithMostAlbum[0].name;
+    const datasM = this.state.artistsWithMostAlbum.map((el, index) => {
+      return [el.name, el.sum];
+    });
+    datasM.unshift(["a", "b"]);
     return (
       <div className="TopArtist">
         <Layout>
           <SEO title="Page two" />
-            <h1>Artists with the most album</h1>
+            <h1>Top Artists</h1>
             <Chart
               width={'500px'}
               height={'300px'}
@@ -46,7 +63,7 @@ export default class TopArtist extends Component{
               loader={<div>Loading Chart</div>}
               data={datas}
               options={{
-                title: 'Artists with the most albums ',
+                title: 'Artists with the most albums',
             //   legend: {position:"none"},
                 colors: ["#b87333"],
                 histogram: { lastBucketPercentile: 5 },
@@ -54,6 +71,19 @@ export default class TopArtist extends Component{
               
               }}
               rootProps={{ 'data-testid': '3' }}
+            />
+            <Chart
+                width={'500px'}
+                height={'300px'}
+                chartType="PieChart"
+                loader={<div>Loading Chart</div>}
+                data={datasM}
+                options={{
+                  title: 'Members with the most bands',
+                  // Just add this option
+                  is3D: true,
+                }}
+                rootProps={{ 'data-testid': '3' }}
             />
             <Link to="/">Go back to the homepage</Link>
         </Layout>
