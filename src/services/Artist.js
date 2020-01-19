@@ -1,4 +1,3 @@
-import React from "react"
 import * as api from "./Api";
 
 export const getArtistsWithMostAlbum = async limit => {
