@@ -9,11 +9,10 @@ import ArtistCompareComponent from "../components/ArtistCompareComponent"
 
 const CompareArtists = () => (
   <Layout>
-    <SEO title="Page two" />
-    <h1>Hi from the 4 page</h1>
-    <p>Welcome to page 4</p>
-    <Link to="/">Go back to the homepage</Link>
-  <ArtistCompareComponent></ArtistCompareComponent>
+    <SEO title="Artists comparison" />
+    <h1>Artists comparison</h1>
+    <ArtistCompareComponent></ArtistCompareComponent>
+    <Link to="/">Go back to home</Link>
   </Layout>
 )
 

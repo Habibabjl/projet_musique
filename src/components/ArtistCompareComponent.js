@@ -9,6 +9,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Avatar from '@material-ui/core/Avatar';
 
 
 
@@ -27,7 +28,7 @@ class ArtistCompareComponent extends React.Component {
 
       
   componentDidMount() {;  
-     this.compareArtist("Queen","U2")
+     this.compareArtist("Queen","Iggy Pop")
   }
 
 
@@ -52,17 +53,44 @@ class ArtistCompareComponent extends React.Component {
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Artist 1</TableCell>
-            <TableCell>Artist 2</TableCell>
-          </TableRow>
+            <TableCell></TableCell>
+            <TableCell><Avatar variant="square" alt="artist 1 img" src={this.state.artistData1.picture} /></TableCell>
+            <TableCell><Avatar variant="square" alt="artist 2 img" src={this.state.artistData2.picture}/></TableCell>
+            {/* <TableCell><Avatar variant="square" alt="artist 1 img" src={this.state.artistData1.picture.small} /></TableCell>
+            <TableCell><Avatar variant="square" alt="artist 2 img" src={this.state.artistData2.picture.small}/></TableCell>  */}
+           </TableRow>
         </TableHead>
         <TableBody>
               <TableRow>
-                <TableCell align='left'>{this.state.artistData1.name}</TableCell>
-                <TableCell align='right'>{this.state.artistData2.name}</TableCell>
-
+                <TableCell>Name</TableCell>
+                <TableCell>{this.state.artistData1.name}</TableCell>
+                <TableCell>{this.state.artistData2.name}</TableCell>
               </TableRow>
-              
+              <TableRow>
+                <TableCell>Artist type</TableCell>
+                <TableCell>{this.state.artistData1.type}</TableCell>
+                <TableCell>{this.state.artistData2.type}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Artist genres</TableCell>
+                <TableCell>{this.state.artistData1.genres}</TableCell>
+                <TableCell>{this.state.artistData2.genres}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Type</TableCell>
+                <TableCell>{this.state.artistData1.disambiguation}</TableCell>
+                <TableCell>{this.state.artistData2.disambiguation}</TableCell>
+              </TableRow>
+              {/* <TableRow>
+                <TableCell>Location country</TableCell>
+                <TableCell>{this.state.artistData1.location.country}</TableCell>
+                <TableCell>{this.state.artistData2.location.country}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Location city</TableCell>
+                <TableCell>{this.state.artistData1.location.city}</TableCell>
+                <TableCell>{this.state.artistData2.location.city}</TableCell>
+              </TableRow> */}
         </TableBody>
       </Table>
     </Paper>
