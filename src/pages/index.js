@@ -2,10 +2,14 @@ import React from "react"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
+import Search from "../components/SearchContainer"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
   <Layout>
+    <div>
+      <Search />
+    </div>
     <SEO title="Home" />
     <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
