@@ -1,4 +1,4 @@
-
+import React from "react"
 import axios from 'axios';
 
 let url_base = "https://wasabi.i3s.unice.fr/api/v1";
@@ -39,4 +39,3 @@ export const del = async url => {
     return error;
   }
 }
-
