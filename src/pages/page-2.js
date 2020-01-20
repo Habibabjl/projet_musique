@@ -33,7 +33,6 @@ export default class TopArtist extends Component{
   //Get members with the most bands
   async getMembersWithMostBands(limit){
     const dataMembers = await artistApi.getMembersWithMostBands(limit);
-    console.log(dataMembers);
     this.setState({
       membersWithMostBands: dataMembers || []
     });
