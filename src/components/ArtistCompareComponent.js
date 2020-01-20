@@ -28,7 +28,7 @@ class ArtistCompareComponent extends React.Component {
 
       
   componentDidMount() {;  
-     this.compareArtist("Queen","Iggy Pop")
+     this.compareArtist("Queen","U2")
   }
 
 
