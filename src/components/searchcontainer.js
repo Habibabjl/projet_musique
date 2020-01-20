@@ -6,10 +6,8 @@ class Search extends Component {
   state = {
     bookList: [],
     search: [],
-    searchResults: [],
     isLoading: true,
-    isError: false,
-    searchQuery: ``,
+    isError: false
   }
   /**
    * React lifecycle method to fetch the data
@@ -56,22 +54,23 @@ class Search extends Component {
      */
     dataToSearch.searchIndex = new JsSearch.TfIdfSearchIndex(`isbn`)
 
-    dataToSearch.addIndex(`title`) // sets the index attribute for the data
-    dataToSearch.addIndex(`author`) // sets the index attribute for the data
+    dataToSearch.addIndex(`name`) // sets the index attribute for the data
+    dataToSearch.addIndex(`picture`) // sets the index attribute for the data
 
     dataToSearch.addDocuments(bookList) // adds the data to be searched
     this.setState({ search: dataToSearch, isLoading: false })
   }
 
-  /**
-   * handles the input change and perfom a search with js-search
-   * in which the results will be added to the state
-   */
-  searchData = e => {
-    const { search } = this.state
-    const queryResult = search.search(e.target.value)
-    this.setState({ searchQuery: e.target.value, searchResults: queryResult })
+  //data recovery - Get artist or song by search
+  findData = async e => {
+    const query = e.target.value;
+    await this.setState({ searchQuery: query });
+    const result = await Axios.get(`https://wasabi.i3s.unice.fr/search/fulltext/${query}`);
+    result && result.data && Array.isArray(result.data)
+     ? this.setState({ queryResults: result.data })
+     : this.setState({ queryResults: [] });
   }
+
   handleSubmit = e => {
     e.preventDefault()
   }
@@ -80,11 +79,9 @@ class Search extends Component {
     const {
       isError,
       isLoading,
-      bookList,
-      searchResults,
-      searchQuery,
+      queryResults,
     } = this.state
-    const queryResults = searchQuery === `` ? bookList : searchResults
+
 
     if (isLoading) {
       return (
@@ -111,6 +108,7 @@ class Search extends Component {
         </div>
       )
     }
+    
     return (
       <div>
         <div style={{ margin: `0 auto` }}>
@@ -121,8 +119,7 @@ class Search extends Component {
               </label>
               <input
                 id="Search"
-                value={searchQuery}
-                onChange={this.searchData}
+                onChange={this.findData}
                 placeholder="Enter your search here"
                 style={{ margin: `0 auto`, width: `400px` }}
               />
@@ -130,8 +127,10 @@ class Search extends Component {
           </form>
           <div>
             Number of items:
-            {queryResults.length}
-            <table
+            {queryResults && queryResults.length}
+
+            {queryResults && queryResults.length > 0 && (
+              <table
               style={{
                 width: `100%`,
                 borderCollapse: `collapse`,
@@ -151,7 +150,7 @@ class Search extends Component {
                       cursor: `pointer`,
                     }}
                   >
-                    Book ISBN
+                    Name
                   </th>
                   <th
                     style={{
@@ -163,34 +162,22 @@ class Search extends Component {
                       cursor: `pointer`,
                     }}
                   >
-                    Book Title
-                  </th>
-                  <th
-                    style={{
-                      textAlign: `left`,
-                      padding: `5px`,
-                      fontSize: `14px`,
-                      fontWeight: 600,
-                      borderBottom: `2px solid #d3d3d3`,
-                      cursor: `pointer`,
-                    }}
-                  >
-                    Book Author
+                    Picture
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {/* eslint-disable */}
-                {queryResults.map(item => {
+                {queryResults && queryResults.length > 0 &&  queryResults.map((item, key) => {
                   return (
-                    <tr key={`row_${item.isbn}`}>
+                    <tr key={`row_${item.name}`} key={key}>
                       <td
                         style={{
                           fontSize: `14px`,
                           border: `1px solid #d3d3d3`,
                         }}
                       >
-                        {item.isbn}
+                        {item && item.name}
                       </td>
                       <td
                         style={{
@@ -198,15 +185,7 @@ class Search extends Component {
                           border: `1px solid #d3d3d3`,
                         }}
                       >
-                        {item.title}
-                      </td>
-                      <td
-                        style={{
-                          fontSize: `14px`,
-                          border: `1px solid #d3d3d3`,
-                        }}
-                      >
-                        {item.author}
+                        {item && item.picture && <img src={item.picture} alt={item.name} />}
                       </td>
                     </tr>
                   )
@@ -214,6 +193,7 @@ class Search extends Component {
                 {/* eslint-enable */}
               </tbody>
             </table>
+            )}
           </div>
         </div>
       </div>
