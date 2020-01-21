@@ -10,6 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Avatar from '@material-ui/core/Avatar';
+import Autosuggest from './Autosuggest';
 
 
 
@@ -50,6 +51,7 @@ class ArtistCompareComponent extends React.Component {
   render() {
     return (
       <Paper>
+        <Autosuggest></Autosuggest>
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
