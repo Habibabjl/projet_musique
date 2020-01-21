@@ -1,6 +1,8 @@
 import React from 'react';
 import _ from "lodash"
 import Autosuggest from 'react-autosuggest';
+import * as artistApi from "../services/ArtistApi";
+
 
 // Imagine you have a list of languages that you'd like to autosuggest.
 const languages = [
@@ -15,6 +17,15 @@ const languages = [
   
 ];
 
+const artists = [{
+  name: 'C',
+  year: 1972
+},
+{
+  name: 'Elm',
+  year: 2012
+},];
+
 // Teach Autosuggest how to calculate suggestions for any given input value.
 const getSuggestions = value => {
   const inputValue = value.trim().toLowerCase();
@@ -24,6 +35,16 @@ const getSuggestions = value => {
     lang.name.toLowerCase().slice(0, inputLength) === inputValue
   );
 };
+
+/*const getSuggestions = value => {
+  const inputValue = value.trim().toLowerCase();
+  const inputLength = inputValue.length;
+
+  return inputLength === 0 ? [] : artists.filter(arts =>
+    arts.name.toLowerCase().slice(0, inputLength) === inputValue
+  );
+};*/
+
 
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
@@ -37,7 +58,7 @@ const renderSuggestion = suggestion => (
   </div>
 );
 
-class Example extends React.Component {
+class AutosuggestArtist extends React.Component {
   constructor() {
     super();
 
@@ -60,10 +81,23 @@ class Example extends React.Component {
 
   // Autosuggest will call this function every time you need to update suggestions.
   // You already implemented this logic above, so just use it.
-  onSuggestionsFetchRequested = _.debounce(({ value }) => {
-      
-    this.setState({
+  /*onSuggestionsFetchRequested = _.debounce(({ value }) => {     
+  this.setState({
       suggestions: getSuggestions(value)
+    });
+  },1000);*/
+
+  async getArtistsByNameFetch(value) {
+    var data = await artistApi.getArtistsByName(value);
+    console.log(data);
+    return data;    
+  }
+
+  onSuggestionsFetchRequested = _.debounce(({ value }) => {      
+    var data = this.getArtistsByNameFetch(value);
+    this.setState({
+      suggestion : data || []
+     // suggestions: getSuggestions(value)
     });
   },1000);
 
@@ -81,7 +115,7 @@ class Example extends React.Component {
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
-      placeholder: 'Type a programming language',
+      placeholder: 'Type a artist/group name',
       value,
       onChange: this.onChange
     };
@@ -100,4 +134,4 @@ class Example extends React.Component {
   }
 }
 
-export default Example;
+export default AutosuggestArtist;
