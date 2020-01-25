@@ -5,21 +5,40 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Chart } from "react-google-charts";
 import * as artistApi from "../services/Artist";
+import base from './base'
 
 export default class TopArtist extends Component{
 
   constructor(props) {
     super(props);
     this.state = {
-      artistsWithMostAlbum: [],
-      membersWithMostBands: [],
-      search: ""
+      artists: {
+        artistsWithMostAlbum: [],
+        membersWithMostBands: [],
+        search: ""
+      }
     }
   }
     
   componentDidMount() {
     this.getArtistsWithMostAlbum(10);
     this.getMembersWithMostBands(10);
+  }
+
+   // Appele avant render
+  componentWillMount() {
+    console.log("Component will mount");
+    this.ref = base.syncState("artists", {
+      context: this,
+      state: 'artists'
+    });
+  }
+
+  // appele quand le composant disparait, par ex
+  // quand on quitte l'application
+  componentWillUnmount() {
+    console.log("Component will unmount");
+    base.removeBinding(this.ref);
   }
 
   //Get artist with the most album
