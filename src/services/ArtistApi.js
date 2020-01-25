@@ -1,3 +1,4 @@
+import axios from 'axios';
 import * as api from "./Api";
 import { async } from "q";
 
@@ -19,10 +20,8 @@ export async function getArtistsWithMostBand(signal = null) {
 }
 
 export const getArtistAlbums = async limit => {
-  //let artistId
 
   let url = `/search/artist_id/56d93d84ce06f50c0fed8747/album/count`;
-  //let url = `/artist/albums/album?limit=${limit}`;
 
   const response = await api.get(url);
   return response;
@@ -40,4 +39,13 @@ export const getArtistDataByName = async function(artistName){
 
   const response = await api.get(url);
   return response;
+}
+
+export const getArtistsByName= async function(request){
+  try {
+    const response = await axios.get(`https://wasabi.i3s.unice.fr/search/fulltext/`+request);
+    return response && response.data;
+  } catch (error) {
+    return error;
+  }
 }
