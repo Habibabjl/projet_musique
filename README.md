@@ -4,25 +4,23 @@ Music projet by : Habiba BOUAJLA & Daniel EID
 
 This project is based on data from the Wasabi site.
 
-> Site : https://wasabi.i3s.unice.fr/
-> API : https://wasabi.i3s.unice.fr/apidoc/
+- Site : https://wasabi.i3s.unice.fr/
+- API : https://wasabi.i3s.unice.fr/apidoc/
 
 # Need to have
-> node
-> gatsby-cli: npm install -g gatsby-cli.
+- node
+- gatsby-cli: npm install -g gatsby-cli.
 
 # Run the project
 
 At the root of the project, run the following commands:
 
-> npm install
-> gastby develop
+- npm install
+- gastby develop
 
 # Heroku
 
-The project is hosted on Heroku :
-
->https://projetmusique.herokuapp.com/
+The project is hosted on Heroku : https://projetmusique.herokuapp.com/
 
 ## Home
 
