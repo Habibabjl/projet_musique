@@ -20,7 +20,7 @@ At the root of the project, run the following commands:
 
 # Heroku
 
-The project is hosted on Heroku : https://projetmusique.herokuapp.com/
+The project is hosted on Heroku : https://projetmusique.herokuapp.com/  (not updated yet)
 
 ## Home
 
