@@ -36,9 +36,7 @@ The project is hosted on Heroku : https://projetmusique.herokuapp.com/
 
 ## Statistiques
 
-- Most used languages in the lyrics
-   - Popularity of major languages (the first 5)
-   - Popularity of minor languages
+- Most used languages in the lyrics (popularity of major languages (the first 5), popularity of minor languages)
 - Most popular genres (change the number of genres to display with the slider)
 
 ## Compare two artists
