@@ -1,71 +1,41 @@
-let url_base = "https://wasabi.i3s.unice.fr/api/v1/";
+import axios from 'axios';
 
-export function get(url) {
-  return new Promise((resolve, reject) => {
-    fetch(url_base + url, {
-      method: "get"
-    })
-      .then(response => {
-        return response.json();
-      })
-      .then(json => {
-        return resolve(json);
-      })
-      .catch(error => {
-        return reject(error);
-      });
-  });
+let url_base = "https://wasabi.i3s.unice.fr/api/v1";
+
+export const get = async url => {
+  try {
+    const response = await axios.get(`${url_base}/${url}`);
+    return response && response.data;
+  } catch (error) {
+    return error;
+  }
 }
 
-export function post(url, body) {
-  return new Promise((resolve, reject) => {
-    fetch(url_base + url, {
-      method: "post",
-      body: body
-    })
-      .then(response => {
-        return response.json();
-      })
-      .then(json => {
-        return resolve(json);
-      })
-      .catch(error => {
-        return reject(error);
-      });
-  });
+export const post = async (url, body) => {
+  try {
+    const response = await axios.post(`${url_base}/${url}`, body);
+    return response && response.data;
+  } catch (error) {
+    return error;
+  }
 }
 
-export function put(url, body) {
-  return new Promise((resolve, reject) => {
-    fetch(url_base + url, {
-      method: "put",
-      body: body
-    })
-      .then(response => {
-        return response.json();
-      })
-      .then(json => {
-        return resolve(json);
-      })
-      .catch(error => {
-        return reject(error);
-      });
-  });
+
+export const put = async (url, body) => {
+  try {
+    const response = await axios.put(`${url_base}/${url}`, body);
+    return response && response.data;
+  } catch (error) {
+    return error;
+  }
 }
 
-export function del(url, body) {
-  return new Promise((resolve, reject) => {
-    fetch(url_base + url, {
-      method: "delete"
-    })
-      .then(response => {
-        return response.json();
-      })
-      .then(json => {
-        return resolve(json);
-      })
-      .catch(error => {
-        return reject(error);
-      });
-  });
+export const del = async url => {
+  try {
+    const response = await axios.delete(`${url_base}/${url}`);
+    return response && response.data;
+  } catch (error) {
+    return error;
+  }
 }
+
