@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 
 let url_base = "https://wasabi.i3s.unice.fr/api/v1";
