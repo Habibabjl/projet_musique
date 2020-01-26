@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from "gatsby"
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Chart } from "react-google-charts";
-import * as artistApi from "../services/Artist";
+import * as artistApi from "../services/ArtistApi";
 import base from './base'
 
 export default class TopArtist extends Component{
@@ -12,11 +11,11 @@ export default class TopArtist extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      artists: {
+    //  artists: {
         artistsWithMostAlbum: [],
         membersWithMostBands: [],
         search: ""
-      }
+     // }
     }
   }
     
@@ -26,20 +25,20 @@ export default class TopArtist extends Component{
   }
 
    // Appele avant render
-  componentWillMount() {
+ /* componentWillMount() {
     console.log("Component will mount");
     this.ref = base.syncState("artists", {
       context: this,
       state: 'artists'
     });
-  }
+  }*/
 
   // appele quand le composant disparait, par ex
   // quand on quitte l'application
-  componentWillUnmount() {
+  /*componentWillUnmount() {
     console.log("Component will unmount");
     base.removeBinding(this.ref);
-  }
+  }*/
 
   //Get artist with the most album
   async getArtistsWithMostAlbum(limit){
@@ -82,7 +81,6 @@ export default class TopArtist extends Component{
               data={datas}
               options={{
                 title: 'Artists with the most albums',
-            //   legend: {position:"none"},
                 colors: ["#b87333"],
                 histogram: { lastBucketPercentile: 5 },
                 vAxis: { scaleType: "mirrorLog" }
@@ -98,7 +96,6 @@ export default class TopArtist extends Component{
                 data={datasM}
                 options={{
                   title: 'Members with the most bands',
-                  // Just add this option
                   is3D: true,
                 }}
                 rootProps={{ 'data-testid': '3' }}

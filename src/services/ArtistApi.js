@@ -1,6 +1,5 @@
 import axios from 'axios';
 import * as api from "./Api";
-import { async } from "q";
 
 export const getArtistsWithMostAlbum = async limit => {
   let url = `/artist/count/album?limit=${limit}`;
@@ -8,16 +7,12 @@ export const getArtistsWithMostAlbum = async limit => {
   return response;
 }
 
-export async function getArtistsWithMostBand(signal = null) {
-  let url = "/artist/member/count/band";
-  let result;
-  if (signal == null) {
-    result = await api.get(url);
-  } else {
-    result = await api.get(url, signal);
-  }
-  return result;
+export const getMembersWithMostBands = async limit => {
+    let url = `/artist/member/count/band?limit=${limit}`;
+    const responseM = await api.get(url);
+    return responseM;
 }
+
 
 export const getArtistAlbums = async limit => {
 

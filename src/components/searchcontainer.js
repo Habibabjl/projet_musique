@@ -128,7 +128,6 @@ class Search extends Component {
           <div>
             Number of items:
             {queryResults && queryResults.length}
-
             {queryResults && queryResults.length > 0 && (
               <table
               style={{
@@ -164,12 +163,37 @@ class Search extends Component {
                   >
                     Picture
                   </th>
+                  <th
+                    style={{
+                      textAlign: `left`,
+                      padding: `5px`,
+                      fontSize: `14px`,
+                      fontWeight: 600,
+                      borderBottom: `2px solid #d3d3d3`,
+                      cursor: `pointer`,
+                    }}
+                  >
+                    Title
+                  </th>
+                  <th
+                    style={{
+                      textAlign: `left`,
+                      padding: `5px`,
+                      fontSize: `14px`,
+                      fontWeight: 600,
+                      borderBottom: `2px solid #d3d3d3`,
+                      cursor: `pointer`,
+                    }}
+                  >
+                    Album Title
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {/* eslint-disable */}
                 {queryResults && queryResults.length > 0 &&  queryResults.map((item, key) => {
                   return (
+                    
                     <tr key={`row_${item.name}`} key={key}>
                       <td
                         style={{
@@ -186,6 +210,22 @@ class Search extends Component {
                         }}
                       >
                         {item && item.picture && <img src={item.picture} alt={item.name} />}
+                      </td>
+                      <td
+                        style={{
+                          fontSize: `14px`,
+                          border: `1px solid #d3d3d3`,
+                        }}
+                      >
+                        {item && item.title}
+                      </td>
+                      <td
+                        style={{
+                          fontSize: `14px`,
+                          border: `1px solid #d3d3d3`,
+                        }}
+                      >
+                        {item && item.albumTitle}
                       </td>
                     </tr>
                   )

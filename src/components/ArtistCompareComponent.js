@@ -1,8 +1,5 @@
 import React from 'react';
-
 import * as artistApi from "../services/ArtistApi";
-
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -12,11 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import Avatar from '@material-ui/core/Avatar';
 import AutosuggestArtist from './Autosuggest';
 
-
-
-
 class ArtistCompareComponent extends React.Component {
-
 
  constructor(props) {
     super(props);
@@ -26,8 +19,7 @@ class ArtistCompareComponent extends React.Component {
        //search: ""     
     }
   }
-
-      
+ 
   componentDidMount() {;  
      this.compareArtist("Queen","Iggy Pop")
   }
