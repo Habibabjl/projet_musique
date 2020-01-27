@@ -20,7 +20,7 @@ At the root of the project, run the following commands:
 
 # Heroku
 
-The project is hosted on Heroku : https://projetmusique.herokuapp.com/  
+The project is hosted on Heroku : https://projetmusique.herokuapp.com/  (old version with react. I didn't manage to deploy it on heroku with gastby.)
 
 ## Home
 
